@@ -8,9 +8,13 @@ export default function Home() {
 
   return (
     <div className="home">
+      <div className="home__logo-container">
+        <img src="/logo.png" alt="Crystal Swipe Logo" className="home__logo" />
+      </div>
       <Header
-        title="Crystal Swipe"
+        title="CRYSTAL SWIPE"
         subtitle="Swipe ta vibe, découvre ta pierre"
+        variant="gradient"
       />
       
       <div className="home__content">

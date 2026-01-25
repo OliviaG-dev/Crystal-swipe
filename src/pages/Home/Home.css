@@ -8,6 +8,19 @@
   margin: 0 auto;
 }
 
+.home__logo-container {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__logo {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 4px 20px rgba(153, 102, 204, 0.3));
+}
+
 .home__content {
   width: 100%;
   max-width: 800px;
@@ -66,6 +79,10 @@
 }
 
 @media (max-width: 768px) {
+  .home__logo {
+    width: 80px;
+  }
+
   .home__features {
     grid-template-columns: 1fr;
     gap: 1.5rem;

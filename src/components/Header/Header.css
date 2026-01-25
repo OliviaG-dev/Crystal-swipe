@@ -15,6 +15,26 @@
   letter-spacing: -0.02em;
 }
 
+.header__title--gradient {
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(
+    to right,
+    #00BCD4 0%,
+    #00BCD4 20%,
+    #2196F3 40%,
+    #3F51B5 60%,
+    #673AB7 80%,
+    #7C4DFF 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 .header__subtitle {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.7);
@@ -25,6 +45,10 @@
 @media (max-width: 768px) {
   .header__title {
     font-size: 2rem;
+  }
+
+  .header__title--gradient {
+    font-size: 2.5rem;
   }
   
   .header__subtitle {
