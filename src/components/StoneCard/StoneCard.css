@@ -1,0 +1,150 @@
+.stone-card {
+  background: linear-gradient(135deg, rgba(153, 102, 204, 0.15) 0%, rgba(74, 144, 226, 0.15) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stone-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.stone-card--primary {
+  border-color: rgba(153, 102, 204, 0.5);
+  box-shadow: 0 8px 32px rgba(153, 102, 204, 0.3);
+}
+
+.stone-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stone-card__emoji {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.stone-card__title-section {
+  flex: 1;
+}
+
+.stone-card__name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: white;
+}
+
+.stone-card__badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+}
+
+.stone-card__match {
+  margin-bottom: 1.5rem;
+}
+
+.stone-card__match-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.stone-card__match-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.stone-card__match-percentage {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.stone-card__description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.stone-card__properties {
+  margin-bottom: 1.5rem;
+}
+
+.stone-card__properties-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.75rem 0;
+}
+
+.stone-card__properties-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stone-card__properties-list li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.stone-card__usage {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  border-left: 3px solid;
+  border-left-color: inherit;
+}
+
+.stone-card__usage-text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.stone-card__usage-text strong {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .stone-card {
+    padding: 1.5rem;
+  }
+
+  .stone-card__emoji {
+    font-size: 2.5rem;
+  }
+
+  .stone-card__name {
+    font-size: 1.5rem;
+  }
+
+  .stone-card__description {
+    font-size: 1rem;
+  }
+}

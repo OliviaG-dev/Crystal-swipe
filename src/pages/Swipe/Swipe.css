@@ -1,0 +1,56 @@
+.swipe {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.swipe__progress {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.swipe__progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.swipe__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #9966CC 0%, #4A90E2 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.swipe__progress-text {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.swipe__card-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.swipe__hint {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .swipe {
+    padding: 1rem;
+  }
+}

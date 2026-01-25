@@ -1,0 +1,88 @@
+import type { Stone } from '../types';
+
+export const stones: Stone[] = [
+  {
+    id: 'amethyst',
+    name: 'Améthyste',
+    emoji: '💜',
+    description: 'La pierre de l\'apaisement mental et du sommeil',
+    properties: [
+      'Apaisement mental',
+      'Sommeil réparateur',
+      'Protection énergétique',
+      'Clarté d\'esprit',
+    ],
+    usage: 'Porte l\'améthyste près de la tête, sous l\'oreiller ou dans ta poche. Elle te dira de respirer avant de paniquer.',
+    color: '#9966CC',
+  },
+  {
+    id: 'labradorite',
+    name: 'Labradorite',
+    emoji: '🌊',
+    description: 'La pierre de l\'hypersensibilité et de la protection émotionnelle',
+    properties: [
+      'Protection contre les énergies négatives',
+      'Équilibre émotionnel',
+      'Intuition renforcée',
+      'Bouclier énergétique',
+    ],
+    usage: 'Porte la labradorite près du cœur ou sur le chakra du plexus solaire. Elle t\'aide à filtrer les émotions des autres.',
+    color: '#4A90E2',
+  },
+  {
+    id: 'quartzRose',
+    name: 'Quartz Rose',
+    emoji: '💗',
+    description: 'La pierre de la douceur émotionnelle et de l\'amour de soi',
+    properties: [
+      'Guérison émotionnelle',
+      'Amour de soi',
+      'Paix intérieure',
+      'Compassion',
+    ],
+    usage: 'Porte le quartz rose près du cœur, dans ta poche ou tiens-le dans ta main quand tu te sens triste.',
+    color: '#FFB6C1',
+  },
+  {
+    id: 'hematite',
+    name: 'Hématite',
+    emoji: '⚫',
+    description: 'La pierre de l\'ancrage et de la stabilité',
+    properties: [
+      'Ancrage à la terre',
+      'Stabilité émotionnelle',
+      'Concentration',
+      'Protection',
+    ],
+    usage: 'Porte l\'hématite dans ta poche ou tiens-la dans ta main pour te reconnecter à ton corps et à l\'instant présent.',
+    color: '#5C5C5C',
+  },
+  {
+    id: 'jasper',
+    name: 'Jasper',
+    emoji: '🟤',
+    description: 'La pierre de la force et de la persévérance',
+    properties: [
+      'Force intérieure',
+      'Persévérance',
+      'Courage',
+      'Équilibre',
+    ],
+    usage: 'Porte le jasper dans ta poche ou sur toi quand tu as besoin de courage et de détermination.',
+    color: '#8B4513',
+  },
+  {
+    id: 'citrine',
+    name: 'Citrine',
+    emoji: '🟡',
+    description: 'La pierre de la joie et de l\'abondance',
+    properties: [
+      'Joie de vivre',
+      'Confiance en soi',
+      'Énergie positive',
+      'Abondance',
+    ],
+    usage: 'Porte la citrine dans ta poche ou sur ton bureau pour attirer la joie et la confiance en toi.',
+    color: '#FFD700',
+  },
+];

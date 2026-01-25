@@ -1,0 +1,106 @@
+.swipe-card {
+  background: linear-gradient(135deg, rgba(153, 102, 204, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.swipe-card__emoji {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.swipe-card__text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swipe-card__actions {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.swipe-card__button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.swipe-card__button--like {
+  background: linear-gradient(135deg, #FF6B9D 0%, #FFB6C1 100%);
+}
+
+.swipe-card__button--like:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
+}
+
+.swipe-card__button--dislike {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.swipe-card__button--dislike:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.15);
+}
+
+@media (max-width: 768px) {
+  .swipe-card {
+    padding: 2rem 1.5rem;
+    min-height: 350px;
+  }
+
+  .swipe-card__emoji {
+    font-size: 3rem;
+  }
+
+  .swipe-card__text {
+    font-size: 1.25rem;
+  }
+
+  .swipe-card__button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
