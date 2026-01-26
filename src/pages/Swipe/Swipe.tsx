@@ -1,19 +1,32 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { questions } from '../../data/questions';
-import type { SwipeResult } from '../../types';
+import type { SwipeResult, Question } from '../../types';
 import SwipeCard from '../../components/SwipeCard/SwipeCard';
 import Header from '../../components/Header/Header';
 import './Swipe.css';
+
+// Fonction pour mélanger aléatoirement un tableau
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 
 export default function Swipe() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [results, setResults] = useState<SwipeResult[]>([]);
 
-  const currentQuestion = questions[currentIndex];
-  const progress = ((currentIndex + 1) / questions.length) * 100;
-  const isLastQuestion = currentIndex === questions.length - 1;
+  // Mélanger les questions une seule fois au chargement du composant
+  const shuffledQuestions = useMemo(() => shuffleArray(questions), []);
+
+  const currentQuestion = shuffledQuestions[currentIndex];
+  const progress = ((currentIndex + 1) / shuffledQuestions.length) * 100;
+  const isLastQuestion = currentIndex === shuffledQuestions.length - 1;
 
   const handleSwipe = (liked: boolean) => {
     const newResult: SwipeResult = {
@@ -45,7 +58,7 @@ export default function Swipe() {
           />
         </div>
         <p className="swipe__progress-text">
-          {currentIndex + 1} / {questions.length}
+          {currentIndex + 1} / {shuffledQuestions.length}
         </p>
       </div>
 
