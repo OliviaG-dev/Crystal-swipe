@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import type { TouchEvent } from 'react';
 import type { Question } from '../../types';
 import './SwipeCard.css';
 
@@ -8,8 +10,35 @@ interface SwipeCardProps {
 }
 
 export default function SwipeCard({ question, onSwipe, className = '' }: SwipeCardProps) {
+  const touchStartX = useRef<number | null>(null);
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+    const threshold = 80;
+
+    if (deltaX > threshold) {
+      // Swipe vers la droite → oui
+      onSwipe(true);
+    } else if (deltaX < -threshold) {
+      // Swipe vers la gauche → non
+      onSwipe(false);
+    }
+
+    touchStartX.current = null;
+  };
+
   return (
-    <div className={`swipe-card ${className}`}>
+    <div
+      className={`swipe-card ${className}`}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="swipe-card__emoji">{question.emoji}</div>
       <p className="swipe-card__text">{question.text}</p>
       <div className="swipe-card__actions">

@@ -49,6 +49,16 @@
   margin-top: 1rem;
 }
 
+.swipe__hint-text--no {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.swipe__hint-text--yes {
+  color: #4cd964;
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .swipe {
     padding: 1rem;

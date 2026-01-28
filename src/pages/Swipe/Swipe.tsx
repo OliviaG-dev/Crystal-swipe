@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { questions } from '../../data/questions';
-import type { SwipeResult, Question } from '../../types';
+import type { SwipeResult } from '../../types';
 import SwipeCard from '../../components/SwipeCard/SwipeCard';
 import Header from '../../components/Header/Header';
 import './Swipe.css';
@@ -20,9 +20,25 @@ export default function Swipe() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [results, setResults] = useState<SwipeResult[]>([]);
+  const [isTouchLayout, setIsTouchLayout] = useState(false);
 
   // Mélanger les questions une seule fois au chargement du composant
   const shuffledQuestions = useMemo(() => shuffleArray(questions), []);
+
+  // Détecter la vue mobile/tablette pour adapter l'UI
+  useEffect(() => {
+    const updateIsTouchLayout = () => {
+      const width = window.innerWidth;
+      setIsTouchLayout(width <= 1024);
+    };
+
+    updateIsTouchLayout();
+    window.addEventListener('resize', updateIsTouchLayout);
+
+    return () => {
+      window.removeEventListener('resize', updateIsTouchLayout);
+    };
+  }, []);
 
   const currentQuestion = shuffledQuestions[currentIndex];
   const progress = ((currentIndex + 1) / shuffledQuestions.length) * 100;
@@ -70,7 +86,20 @@ export default function Swipe() {
       </div>
 
       <div className="swipe__hint">
-        <p>Swipe ❤️ si ça te ressemble, ❌ sinon</p>
+        <p>
+          {isTouchLayout
+            ? (
+              <>
+                Swipe à gauche si c’est{' '}
+                <span className="swipe__hint-text--no">NON</span>
+                {' '}et à droite si c’est{' '}
+                <span className="swipe__hint-text--yes">OUI</span>
+                .
+              </>
+            ) : (
+              'Swipe ❤️ si ça te ressemble, ❌ sinon'
+            )}
+        </p>
       </div>
     </div>
   );

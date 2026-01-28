@@ -20,16 +20,6 @@
 .swipe-card__emoji {
   font-size: 4rem;
   margin-bottom: 1.5rem;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 .swipe-card__text {
@@ -49,6 +39,13 @@
   gap: 2rem;
   margin-top: 2rem;
   justify-content: center;
+}
+
+/* Cacher les boutons sur mobile + tablette, conserver sur desktop */
+@media (max-width: 1024px) {
+  .swipe-card__actions {
+    display: none;
+  }
 }
 
 .swipe-card__button {
