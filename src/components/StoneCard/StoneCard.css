@@ -22,17 +22,31 @@
 .stone-card__header {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.stone-card__emoji {
-  font-size: 3.5rem;
+.stone-card__icon-wrap {
+  flex-shrink: 0;
   line-height: 1;
 }
 
+.stone-card__icon {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(153, 102, 204, 0.25));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.stone-card:hover .stone-card__icon {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 16px rgba(153, 102, 204, 0.35));
+}
+
 .stone-card__title-section {
-  flex: 1;
+  flex-shrink: 0;
 }
 
 .stone-card__name {
@@ -136,8 +150,9 @@
     padding: 1.5rem;
   }
 
-  .stone-card__emoji {
-    font-size: 2.5rem;
+  .stone-card__icon {
+    width: 4rem;
+    height: 4rem;
   }
 
   .stone-card__name {

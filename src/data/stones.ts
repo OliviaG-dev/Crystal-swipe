@@ -4,7 +4,7 @@ export const stones: Stone[] = [
   {
     id: 'tourmaline',
     name: 'Tourmaline Noire',
-    emoji: '🛡️',
+    icon: '/pierres/tourmaline-noire.png',
     description: "La pierre de la protection et des limites énergétiques",
     properties: [
       'Protection énergétique',
@@ -18,7 +18,7 @@ export const stones: Stone[] = [
   {
     id: 'aquamarine',
     name: 'Aigue-marine',
-    emoji: '💧',
+    icon: '/pierres/aigue-marine.png',
     description: "La pierre de l'apaisement émotionnel et de l'expression",
     properties: [
       'Apaisement émotionnel',
@@ -26,13 +26,13 @@ export const stones: Stone[] = [
       'Lâcher-prise',
       'Calme intérieur',
     ],
-    usage: "Porte l’aigue-marine près de la gorge ou garde-la sur toi quand tu as besoin de dire les choses sans te noyer dans l’émotion.",
+    usage: "Porte l'aigue-marine près de la gorge ou garde-la sur toi quand tu as besoin de dire les choses sans te noyer dans l'émotion.",
     color: '#7FDBFF',
   },
   {
     id: 'sodalite',
     name: 'Sodalite',
-    emoji: '🧠',
+    icon: '/pierres/soladite.png',
     description: 'La pierre de la clarté mentale et de la logique apaisée',
     properties: [
       'Clarté mentale',
@@ -40,13 +40,13 @@ export const stones: Stone[] = [
       'Rationalité',
       'Calme du mental',
     ],
-    usage: "Porte la sodalite quand ton cerveau part dans tous les sens. Elle aide à remettre de l’ordre sans te couper de ton intuition.",
+    usage: "Porte la sodalite quand ton cerveau part dans tous les sens. Elle aide à remettre de l'ordre sans te couper de ton intuition.",
     color: '#2F4F9F',
   },
   {
     id: 'lapisLazuli',
     name: 'Lapis-lazuli',
-    emoji: '🔵',
+    icon: '/pierres/lapis-lazuli.png',
     description: 'La pierre de la vérité intérieure et de la confiance',
     properties: [
       'Expression personnelle',
@@ -54,13 +54,13 @@ export const stones: Stone[] = [
       'Vérité intérieure',
       'Clarté émotionnelle',
     ],
-    usage: "Porte le lapis-lazuli quand tu as besoin de t’affirmer ou de dire ta vérité. Elle t’aide à parler juste, pas plus fort.",
+    usage: "Porte le lapis-lazuli quand tu as besoin de t'affirmer ou de dire ta vérité. Elle t'aide à parler juste, pas plus fort.",
     color: '#26619C',
   },
   {
     id: 'obsidian',
     name: 'Obsidienne',
-    emoji: '🌑',
+    icon: '/pierres/obstidienne.png',
     description: "La pierre de l'introspection et du nettoyage émotionnel",
     properties: [
       'Introspection',
@@ -68,13 +68,13 @@ export const stones: Stone[] = [
       'Protection profonde',
       'Prise de conscience',
     ],
-    usage: "Utilise l’obsidienne avec intention, plutôt en méditation ou chez toi. Elle met en lumière ce que tu évites… mais pour t’aider à avancer.",
+    usage: "Utilise l'obsidienne avec intention, plutôt en méditation ou chez toi. Elle met en lumière ce que tu évites… mais pour t'aider à avancer.",
     color: '#1C1C1C',
   },
   {
     id: 'amethyst',
     name: 'Améthyste',
-    emoji: '💜',
+    icon: '/pierres/améthyste.png',
     description: 'La pierre de l\'apaisement mental et du sommeil',
     properties: [
       'Apaisement mental',
@@ -88,7 +88,7 @@ export const stones: Stone[] = [
   {
     id: 'labradorite',
     name: 'Labradorite',
-    emoji: '🌊',
+    icon: '/pierres/labradorite.png',
     description: 'La pierre de l\'hypersensibilité et de la protection émotionnelle',
     properties: [
       'Protection contre les énergies négatives',
@@ -102,7 +102,7 @@ export const stones: Stone[] = [
   {
     id: 'quartzRose',
     name: 'Quartz Rose',
-    emoji: '💗',
+    icon: '/pierres/quartz-rose.png',
     description: 'La pierre de la douceur émotionnelle et de l\'amour de soi',
     properties: [
       'Guérison émotionnelle',
@@ -116,7 +116,7 @@ export const stones: Stone[] = [
   {
     id: 'hematite',
     name: 'Hématite',
-    emoji: '⚫',
+    icon: '/pierres/hématite.png',
     description: 'La pierre de l\'ancrage et de la stabilité',
     properties: [
       'Ancrage à la terre',
@@ -130,7 +130,7 @@ export const stones: Stone[] = [
   {
     id: 'jasper',
     name: 'Jasper',
-    emoji: '🟤',
+    icon: '/pierres/japser.png',
     description: 'La pierre de la force et de la persévérance',
     properties: [
       'Force intérieure',
@@ -144,7 +144,7 @@ export const stones: Stone[] = [
   {
     id: 'citrine',
     name: 'Citrine',
-    emoji: '🟡',
+    icon: '/pierres/citrine.png',
     description: 'La pierre de la joie et de l\'abondance',
     properties: [
       'Joie de vivre',

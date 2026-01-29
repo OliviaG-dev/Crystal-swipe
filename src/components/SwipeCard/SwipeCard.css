@@ -23,8 +23,8 @@
 }
 
 .swipe-card__icon {
-  width: 6rem;
-  height: 6rem;
+  width: 8rem;
+  height: 8rem;
   object-fit: contain;
   background: transparent;
 }
@@ -111,8 +111,8 @@
   }
 
   .swipe-card__icon {
-    width: 5rem;
-    height: 5rem;
+    width: 6.5rem;
+    height: 6.5rem;
   }
 
   .swipe-card__text {

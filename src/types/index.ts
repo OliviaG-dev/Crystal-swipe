@@ -8,7 +8,7 @@ export interface Question {
 export interface Stone {
   id: string;
   name: string;
-  emoji: string;
+  icon: string; // path to icon in public/pierres (e.g. /pierres/améthyste.png)
   description: string;
   properties: string[];
   usage: string;

@@ -12,7 +12,9 @@ export default function StoneCard({ match, rank }: StoneCardProps) {
   return (
     <div className={`stone-card stone-card--${rank}`}>
       <div className="stone-card__header">
-        <div className="stone-card__emoji">{stone.emoji}</div>
+        <div className="stone-card__icon-wrap">
+          <img src={stone.icon} alt="" className="stone-card__icon" />
+        </div>
         <div className="stone-card__title-section">
           <h3 className="stone-card__name">{stone.name}</h3>
           {rank === 'primary' && (
