@@ -17,9 +17,16 @@
   margin: 0 auto;
 }
 
-.swipe-card__emoji {
-  font-size: 4rem;
+.swipe-card__icon-wrap {
   margin-bottom: 1.5rem;
+  background: transparent;
+}
+
+.swipe-card__icon {
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
+  background: transparent;
 }
 
 .swipe-card__text {
@@ -53,32 +60,45 @@
   height: 70px;
   border-radius: 50%;
   border: none;
-  font-size: 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.swipe-card__button-icon {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  filter: brightness(1.1);
 }
 
 .swipe-card__button--like {
-  background: linear-gradient(135deg, #FF6B9D 0%, #FFB6C1 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.swipe-card__button--like .swipe-card__button-icon {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .swipe-card__button--like:hover {
-  transform: scale(1.15);
-  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(153, 102, 204, 0.5);
 }
 
 .swipe-card__button--dislike {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.35);
 }
 
 .swipe-card__button--dislike:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
@@ -86,9 +106,13 @@
     min-height: 460px;
   }
 
-  .swipe-card__emoji {
-    font-size: 3rem;
+  .swipe-card__icon-wrap {
     margin-bottom: 0;
+  }
+
+  .swipe-card__icon {
+    width: 5rem;
+    height: 5rem;
   }
 
   .swipe-card__text {
@@ -98,6 +122,15 @@
   .swipe-card__button {
     width: 60px;
     height: 60px;
-    font-size: 1.5rem;
+  }
+
+  .swipe-card__button-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .swipe-card__button--like .swipe-card__button-icon {
+    width: 2rem;
+    height: 2rem;
   }
 }

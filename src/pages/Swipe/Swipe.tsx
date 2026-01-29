@@ -97,7 +97,13 @@ export default function Swipe() {
                 .
               </>
             ) : (
-              'Swipe ❤️ si ça te ressemble, ❌ sinon'
+              <>
+                Swipe{' '}
+                <img src="/icons/swipe-yes.png" alt="" className="swipe__hint-icon" />
+                {' '}si ça te ressemble,{' '}
+                <img src="/icons/swipe-no.png" alt="" className="swipe__hint-icon" />
+                {' '}sinon
+              </>
             )}
         </p>
       </div>

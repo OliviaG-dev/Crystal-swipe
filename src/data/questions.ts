@@ -4,7 +4,7 @@ export const questions: Question[] = [
   {
     id: '1',
     text: 'En ce moment, je me sens vidé·e même après avoir dormi',
-    emoji: '😴',
+    icon: '/icons/fatigue.png',
     stoneMatches: {
       labradorite: 3,
       amethyst: 2,
@@ -14,7 +14,7 @@ export const questions: Question[] = [
   {
     id: '2',
     text: "Mon mental ne s'arrête jamais",
-    emoji: '😬',
+    icon: '/icons/mental-overload.png',
     stoneMatches: {
       amethyst: 3,
       sodalite: 2,
@@ -24,7 +24,7 @@ export const questions: Question[] = [
   {
     id: '3',
     text: 'Je ressens fortement les émotions des autres',
-    emoji: '💔',
+    icon: '/icons/empathy.png',
     stoneMatches: {
       labradorite: 3,
       tourmaline: 2,
@@ -34,7 +34,7 @@ export const questions: Question[] = [
   {
     id: '4',
     text: "J'ai envie d'avancer mais quelque chose me bloque",
-    emoji: '🔥',
+    icon: '/icons/blockage.png',
     stoneMatches: {
       hematite: 3,
       obsidian: 2,
@@ -44,7 +44,7 @@ export const questions: Question[] = [
   {
     id: '5',
     text: "J'ai du mal à faire le vide dans ma tête",
-    emoji: '🧠',
+    icon: '/icons/mental-noise.png',
     stoneMatches: {
       amethyst: 3,
       sodalite: 2,
@@ -54,7 +54,7 @@ export const questions: Question[] = [
   {
     id: '6',
     text: "Je me sens dispersé·e, j'ai du mal à me concentrer",
-    emoji: '🌀',
+    icon: '/icons/focus.png',
     stoneMatches: {
       jasper: 3,
       hematite: 2,
@@ -64,7 +64,7 @@ export const questions: Question[] = [
   {
     id: '7',
     text: 'Je manque de confiance en moi en ce moment',
-    emoji: '💪',
+    icon: '/icons/confidence.png',
     stoneMatches: {
       citrine: 3,
       lapisLazuli: 2,
@@ -74,7 +74,7 @@ export const questions: Question[] = [
   {
     id: '8',
     text: 'Je me sens triste ou mélancolique',
-    emoji: '💙',
+    icon: '/icons/sadness.png',
     stoneMatches: {
       quartzRose: 3,
       amethyst: 2,
@@ -84,7 +84,7 @@ export const questions: Question[] = [
   {
     id: '9',
     text: 'Je me sens stressé·e ou anxieux·se',
-    emoji: '😰',
+    icon: '/icons/stress.png',
     stoneMatches: {
       amethyst: 3,
       tourmaline: 2,
@@ -94,7 +94,7 @@ export const questions: Question[] = [
   {
     id: '10',
     text: "J'ai besoin de plus d'énergie et de vitalité",
-    emoji: '⚡',
+    icon: '/icons/energy.png',
     stoneMatches: {
       citrine: 3,
       jasper: 2,
@@ -104,7 +104,7 @@ export const questions: Question[] = [
   {
     id: '11',
     text: 'Je me sens déconnecté·e de mon corps',
-    emoji: '🌱',
+    icon: '/icons/grounding.png',
     stoneMatches: {
       hematite: 3,
       jasper: 2,
@@ -114,7 +114,7 @@ export const questions: Question[] = [
   {
     id: '12',
     text: 'Je cherche à mieux comprendre mes émotions',
-    emoji: '🔍',
+    icon: '/icons/introspection.png',
     stoneMatches: {
       obsidian: 3,
       labradorite: 2,
@@ -124,7 +124,7 @@ export const questions: Question[] = [
   {
     id: '13',
     text: 'Je me sens créatif·ve mais bloqué·e',
-    emoji: '✨',
+    icon: '/icons/blocked-creativity.png',
     stoneMatches: {
       citrine: 3,
       amethyst: 2,
@@ -134,7 +134,7 @@ export const questions: Question[] = [
   {
     id: '14',
     text: "J'ai du mal à dormir ou à me reposer",
-    emoji: '🌙',
+    icon: '/icons/sleep.png',
     stoneMatches: {
       amethyst: 3,
       aquamarine: 2,
@@ -144,7 +144,7 @@ export const questions: Question[] = [
   {
     id: '15',
     text: "Je me sens envahi·e par des pensées négatives",
-    emoji: '☁️',
+    icon: '/icons/mental-overload.png',
     stoneMatches: {
       obsidian: 3,
       amethyst: 2,
@@ -154,7 +154,7 @@ export const questions: Question[] = [
   {
     id: '16',
     text: "Je me sens facilement envahi·e par l'énergie des autres",
-    emoji: '🛡️',
+    icon: '/icons/protection.png',
     stoneMatches: {
       tourmaline: 3,
       labradorite: 2,
@@ -164,7 +164,7 @@ export const questions: Question[] = [
   {
     id: '17',
     text: "J'ai du mal à exprimer ce que je ressens",
-    emoji: '🗣️',
+    icon: '/icons/communication.png',
     stoneMatches: {
       aquamarine: 3,
       lapisLazuli: 2,
@@ -174,7 +174,7 @@ export const questions: Question[] = [
   {
     id: '18',
     text: "Je me sens confus·e, j'ai du mal à y voir clair",
-    emoji: '🌫️',
+    icon: '/icons/clarity.png',
     stoneMatches: {
       sodalite: 3,
       amethyst: 2,
@@ -184,7 +184,7 @@ export const questions: Question[] = [
   {
     id: '19',
     text: "J'ai du mal à lâcher prise",
-    emoji: '🌊',
+    icon: '/icons/fluidity.png',
     stoneMatches: {
       aquamarine: 3,
       amethyst: 2,
@@ -194,7 +194,7 @@ export const questions: Question[] = [
   {
     id: '20',
     text: "Je ne sais plus trop où je vais en ce moment",
-    emoji: '🧭',
+    icon: '/icons/direction.png',
     stoneMatches: {
       labradorite: 3,
       lapisLazuli: 2,

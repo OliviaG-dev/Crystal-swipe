@@ -1,7 +1,7 @@
 export interface Question {
   id: string;
   text: string;
-  emoji: string;
+  icon: string; // path to icon in public/icons (e.g. /icons/fatigue.png)
   stoneMatches: Record<string, number>; // pierre -> points
 }
 

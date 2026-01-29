@@ -59,6 +59,13 @@
   font-weight: 600;
 }
 
+.swipe__hint-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  vertical-align: middle;
+  object-fit: contain;
+}
+
 .swipe__back-button {
   margin-top: 1.5rem;
   background: transparent;

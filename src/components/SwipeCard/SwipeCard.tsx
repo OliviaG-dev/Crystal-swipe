@@ -39,7 +39,9 @@ export default function SwipeCard({ question, onSwipe, className = '' }: SwipeCa
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="swipe-card__emoji">{question.emoji}</div>
+      <div className="swipe-card__icon-wrap">
+        <img src={question.icon} alt="" className="swipe-card__icon" />
+      </div>
       <p className="swipe-card__text">{question.text}</p>
       <div className="swipe-card__actions">
         <button
@@ -47,14 +49,14 @@ export default function SwipeCard({ question, onSwipe, className = '' }: SwipeCa
           onClick={() => onSwipe(false)}
           aria-label="Non"
         >
-          ❌
+          <img src="/icons/swipe-no.png" alt="" className="swipe-card__button-icon" />
         </button>
         <button
           className="swipe-card__button swipe-card__button--like"
           onClick={() => onSwipe(true)}
           aria-label="Oui"
         >
-          ❤️
+          <img src="/icons/swipe-yes.png" alt="" className="swipe-card__button-icon" />
         </button>
       </div>
     </div>
