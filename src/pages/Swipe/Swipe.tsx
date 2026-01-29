@@ -101,6 +101,14 @@ export default function Swipe() {
             )}
         </p>
       </div>
+
+      <button
+        type="button"
+        className="swipe__back-button"
+        onClick={() => navigate('/')}
+      >
+        ← Revenir à l&apos;accueil
+      </button>
     </div>
   );
 }

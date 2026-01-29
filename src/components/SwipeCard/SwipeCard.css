@@ -83,12 +83,12 @@
 
 @media (max-width: 768px) {
   .swipe-card {
-    padding: 2rem 1.5rem;
-    min-height: 350px;
+    min-height: 460px;
   }
 
   .swipe-card__emoji {
     font-size: 3rem;
+    margin-bottom: 0;
   }
 
   .swipe-card__text {
