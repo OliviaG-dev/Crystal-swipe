@@ -1,6 +1,6 @@
 # 💎 Crystal Swipe
 
-**Swipe ta vibe, découvre ta pierre**
+**Écoute ton ressenti, découvre ta pierre**
 
 Crystal Swipe est une expérience ludique et intuitive qui te connecte à ton énergie du moment grâce aux pierres et cristaux. Swipe les situations et les émotions qui te ressemblent, et découvre les pierres qui résonnent le plus avec toi aujourd'hui. Simple, fun et inspirant !
 

@@ -8,21 +8,26 @@ import StoneCard from '../../components/StoneCard/StoneCard';
 import Button from '../../components/Button/Button';
 import './Results.css';
 
+function getInitialMatches(): MatchResult[] {
+  try {
+    const saved = localStorage.getItem('swipeResults');
+    if (!saved) return [];
+    const results: SwipeResult[] = JSON.parse(saved);
+    return calculateMatches(results, questions);
+  } catch {
+    return [];
+  }
+}
+
 export default function Results() {
   const navigate = useNavigate();
-  const [matches, setMatches] = useState<MatchResult[]>([]);
+  const [matches] = useState<MatchResult[]>(getInitialMatches);
 
   useEffect(() => {
-    const savedResults = localStorage.getItem('swipeResults');
-    if (savedResults) {
-      const results: SwipeResult[] = JSON.parse(savedResults);
-      const calculatedMatches = calculateMatches(results, questions);
-      setMatches(calculatedMatches);
-    } else {
-      // Si pas de résultats, rediriger vers la page d'accueil
+    if (matches.length === 0) {
       navigate('/');
     }
-  }, [navigate]);
+  }, [matches.length, navigate]);
 
   const handleRestart = () => {
     localStorage.removeItem('swipeResults');
@@ -72,7 +77,7 @@ export default function Results() {
             Retour à l'accueil
           </Button>
           <Button variant="primary" onClick={handleRestart}>
-            Recommencer ✨
+            Recommencer 
           </Button>
         </div>
       </div>
