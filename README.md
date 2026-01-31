@@ -10,14 +10,24 @@ Marre des quizz compliqués et des pierres mystérieuses ? Avec Crystal Swipe, i
 
 ## ✨ Fonctionnalités
 
-- 🎮 **Fun & Intuitif** : Swipes simples, rapide, comme un jeu
+- 🎮 **Fun & Intuitif** : Swipes simples, rapide, comme un jeu (← / →)
 - 💎 **Personnalisé** : Chaque résultat correspond à ton état du moment
 - 🔮 **Éducatif** : Découvre les propriétés des pierres de manière ludique
 - 📱 **Responsive** : Fonctionne parfaitement sur mobile et desktop
 
+## 🗺️ Parcours
+
+1. **Accueil** : Présentation du concept et lancement du swipe
+2. **Swipe** : Réponds aux questions en swipant à gauche (non) ou à droite (oui)
+3. **Résultats** : Découvre tes 3 pierres matchées avec pourcentage, propriétés et conseil du jour
+
 ## 🚀 Installation
 
 ```bash
+# Cloner le repo (si besoin)
+# git clone <url>
+# cd crystal-swipe
+
 # Installer les dépendances
 npm install
 
@@ -29,44 +39,42 @@ npm run build
 
 # Prévisualiser le build
 npm run preview
+
+# Linter
+npm run lint
 ```
 
 ## 📁 Architecture
-
-Le projet suit une architecture modulaire où chaque page et composant a son propre dossier avec ses fichiers `.tsx` et `.css` :
 
 ```
 src/
 ├── components/          # Composants réutilisables
 │   ├── Button/
-│   │   ├── Button.tsx
-│   │   └── Button.css
 │   ├── Header/
 │   ├── SwipeCard/
 │   └── StoneCard/
-├── pages/              # Pages de l'application
+├── pages/
 │   ├── Home/
-│   │   ├── Home.tsx
-│   │   └── Home.css
 │   ├── Swipe/
 │   └── Results/
-├── data/               # Données (questions, pierres)
-├── types/              # Types TypeScript
-└── utils/              # Utilitaires (scoring, etc.)
+├── data/                # questions.ts, stones.ts
+├── types/               # Types TypeScript (SwipeResult, MatchResult, etc.)
+└── utils/               # scoring.ts (calcul des matchs)
 ```
+
+Chaque composant/page a son dossier avec `.tsx` et `.css`.
 
 ## 🎨 Design
 
 - **Ton** : Léger, fun, inspirant
-- **Style visuel** : Couleurs minérales / cristaux, typographie moderne et épurée
-- **Ambiance** : Mystique mais accessible, pas trop "ésotérique"
+- **Palette** : Violet (#9966cc), bleu (#4a90e2), lavande — ambiance cristaux
+- **Style** : Cartes glassmorphism, icônes SVG thématiques, typo moderne
 
-## 🛠️ Technologies
+## 🛠️ Stack
 
-- React 19
-- TypeScript
-- Vite
-- React Router DOM
+- **React 19** + **TypeScript**
+- **Vite 7**
+- **React Router DOM 7**
 
 ## 📝 License
 
