@@ -1,81 +1,103 @@
-# 💎 Crystal Swipe
+# Crystal Swipe
 
 **Écoute ton ressenti, découvre ta pierre**
 
-Crystal Swipe est une expérience ludique et intuitive qui te connecte à ton énergie du moment grâce aux pierres et cristaux. Swipe les situations et les émotions qui te ressemblent, et découvre les pierres qui résonnent le plus avec toi aujourd'hui. Simple, fun et inspirant !
+Crystal Swipe est une expérience ludique et intuitive qui te connecte à ton énergie du moment grâce aux pierres et cristaux. Swipe les situations et les émotions qui te ressemblent, et découvre les pierres qui résonnent le plus avec toi aujourd'hui.
 
-## 🎯 Concept
+## Concept
 
-Marre des quizz compliqués et des pierres mystérieuses ? Avec Crystal Swipe, il te suffit de swiper tes ressentis et d'obtenir instantanément ton match énergétique. Une façon légère et interactive de découvrir la lithothérapie, sans prise de tête !
+Marre des quizz compliqués et des pierres mystérieuses ? Il te suffit de swiper tes ressentis pour obtenir instantanément ton **match énergétique** : une façon légère et interactive de découvrir la lithothérapie, sans prise de tête.
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-- 🎮 **Fun & Intuitif** : Swipes simples, rapide, comme un jeu (← / →)
-- 💎 **Personnalisé** : Chaque résultat correspond à ton état du moment
-- 🔮 **Éducatif** : Découvre les propriétés des pierres de manière ludique
-- 📱 **Responsive** : Fonctionne parfaitement sur mobile et desktop
+- **Swipe intuitif** : gauche = non, droite = oui (souris, trackpad ou tactile)
+- **Questions mélangées** à chaque session pour varier l’expérience
+- **3 pierres matchées** : principale, secondaire et complémentaire, avec barre de pourcentage
+- **Fiches détaillées** : description, propriétés et conseil du jour par pierre
+- **Historique local** : jusqu’à 10 tirages sauvegardés (`localStorage`), aperçu sur l’accueil et liste complète sur les résultats
+- **Responsive** : interface adaptée mobile, tablette et desktop
 
-## 🗺️ Parcours
+## Parcours utilisateur
 
-1. **Accueil** : Présentation du concept et lancement du swipe
-2. **Swipe** : Réponds aux questions en swipant à gauche (non) ou à droite (oui)
-3. **Résultats** : Découvre tes 3 pierres matchées avec pourcentage, propriétés et conseil du jour
+| Étape | Route | Description |
+|-------|--------|-------------|
+| Accueil | `/` | Présentation, CTA et derniers tirages (3 max.) |
+| Swipe | `/swipe` | 20 questions avec barre de progression |
+| Résultats | `/results` | Top 3 pierres, actions et historique |
 
-## 🚀 Installation
+## Données
+
+- **20 questions** (`src/data/questions.ts`) — texte, icône (`/icons/`) et points par pierre
+- **11 pierres** (`src/data/stones.ts`) — nom, visuel (`/pierres/`), propriétés, usage et couleur du match
+
+Le score est calculé dans `src/utils/scoring.ts` à partir des réponses « oui ».
+
+## Installation
+
+**Prérequis** : Node.js 18+
 
 ```bash
-# Cloner le repo (si besoin)
-# git clone <url>
-# cd crystal-swipe
-
-# Installer les dépendances
 npm install
-
-# Lancer le serveur de développement
-npm run dev
-
-# Build pour la production
-npm run build
-
-# Prévisualiser le build
-npm run preview
-
-# Linter
-npm run lint
+npm run dev      # http://localhost:5173
+npm run build    # build production
+npm run preview  # prévisualiser le build
+npm run lint     # ESLint
 ```
 
-## 📁 Architecture
+## Architecture
 
 ```
-src/
-├── components/          # Composants réutilisables
-│   ├── Button/
-│   ├── Header/
-│   ├── SwipeCard/
-│   └── StoneCard/
-├── pages/
-│   ├── Home/
-│   ├── Swipe/
-│   └── Results/
-├── data/                # questions.ts, stones.ts
-├── types/               # Types TypeScript (SwipeResult, MatchResult, etc.)
-└── utils/               # scoring.ts (calcul des matchs)
+crystal-swipe/
+├── public/
+│   ├── logo.png
+│   ├── icons/          # icônes des questions + swipe
+│   └── pierres/        # visuels des pierres
+├── src/
+│   ├── App.tsx
+│   ├── App.css
+│   ├── main.tsx
+│   ├── index.css
+│   ├── components/
+│   │   ├── Button/
+│   │   ├── Header/
+│   │   ├── SwipeCard/
+│   │   └── StoneCard/
+│   ├── pages/
+│   │   ├── Home/
+│   │   ├── Swipe/
+│   │   └── Results/
+│   ├── data/
+│   │   ├── questions.ts
+│   │   └── stones.ts
+│   ├── types/
+│   │   └── index.ts
+│   └── utils/
+│       ├── scoring.ts
+│       └── history.ts
+├── index.html
+└── package.json
 ```
 
-Chaque composant/page a son dossier avec `.tsx` et `.css`.
+Chaque composant et chaque page a son dossier avec `.tsx` et `.css`.
 
-## 🎨 Design
+## Stockage local
 
-- **Ton** : Léger, fun, inspirant
-- **Palette** : Violet (#9966cc), bleu (#4a90e2), lavande — ambiance cristaux
-- **Style** : Cartes glassmorphism, icônes SVG thématiques, typo moderne
+| Clé | Rôle |
+|-----|------|
+| `swipeResults` | Réponses de la session en cours |
+| `swipeSession` | Métadonnées (id, date, résultats) |
+| `swipeHistory` | Historique des tirages (max. 10 entrées) |
 
-## 🛠️ Stack
+## Design
 
-- **React 19** + **TypeScript**
-- **Vite 7**
-- **React Router DOM 7**
+- **Ton** : léger, fun, inspirant
+- **Palette** : violet `#9966cc`, bleu `#4a90e2`, lavande
+- **UI** : cartes glassmorphism, icônes SVG, dégradés type cristal
 
-## 📝 License
+## Stack
+
+- React 19 · TypeScript · Vite 7 · React Router DOM 7
+
+## License
 
 MIT

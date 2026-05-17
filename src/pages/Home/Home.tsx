@@ -1,10 +1,22 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
+import { getSwipeHistory } from '../../utils/history';
 import './Home.css';
+
+function formatHistoryDate(value: string) {
+  return new Intl.DateTimeFormat('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(value));
+}
 
 export default function Home() {
   const navigate = useNavigate();
+  const [history] = useState(() => getSwipeHistory().slice(0, 3));
 
   return (
     <div className="home">
@@ -98,6 +110,29 @@ export default function Home() {
             <h3>Éducatif</h3>
             <p>Découvre les propriétés des pierres de manière ludique</p>
           </div>
+
+          {history.map((entry) => {
+            const mainMatch = entry.matches[0];
+            if (!mainMatch) return null;
+
+            return (
+              <div key={entry.id} className="home__feature home__feature--history">
+                <span className="home__feature-icon">
+                  <img
+                    src={mainMatch.stone.icon}
+                    alt=""
+                    className="home__feature-stone"
+                  />
+                </span>
+                <h3>{mainMatch.stone.name}</h3>
+                <p>
+                  {formatHistoryDate(entry.completedAt)}
+                  <br />
+                  {mainMatch.percentage}% match
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         <div className="home__cta">

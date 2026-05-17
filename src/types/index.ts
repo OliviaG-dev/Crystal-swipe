@@ -20,8 +20,20 @@ export interface SwipeResult {
   liked: boolean;
 }
 
+export interface SwipeSession {
+  id: string;
+  completedAt: string;
+  results: SwipeResult[];
+}
+
 export interface MatchResult {
   stone: Stone;
   score: number;
   percentage: number;
+}
+
+export interface HistoryEntry {
+  id: string;
+  completedAt: string;
+  matches: MatchResult[];
 }

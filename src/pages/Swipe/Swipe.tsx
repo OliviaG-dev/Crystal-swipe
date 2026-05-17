@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { questions } from '../../data/questions';
-import type { SwipeResult } from '../../types';
+import type { SwipeResult, SwipeSession } from '../../types';
 import SwipeCard from '../../components/SwipeCard/SwipeCard';
 import Header from '../../components/Header/Header';
 import './Swipe.css';
@@ -14,6 +14,14 @@ function shuffleArray<T>(array: T[]): T[] {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   return shuffled;
+}
+
+function createSessionId() {
+  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
+    return crypto.randomUUID();
+  }
+
+  return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
 export default function Swipe() {
@@ -55,7 +63,14 @@ export default function Swipe() {
 
     if (isLastQuestion) {
       // Sauvegarder les résultats et naviguer vers la page de résultats
+      const session: SwipeSession = {
+        id: createSessionId(),
+        completedAt: new Date().toISOString(),
+        results: newResults,
+      };
+
       localStorage.setItem('swipeResults', JSON.stringify(newResults));
+      localStorage.setItem('swipeSession', JSON.stringify(session));
       navigate('/results');
     } else {
       setCurrentIndex(currentIndex + 1);
