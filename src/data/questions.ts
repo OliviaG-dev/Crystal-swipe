@@ -7,8 +7,8 @@ export const questions: Question[] = [
     icon: '/icons/fatigue.png',
     stoneMatches: {
       labradorite: 3,
-      amethyst: 2,
-      hematite: 1,
+      hematite: 2,
+      jasper: 1,
     },
   },
   {
@@ -16,8 +16,8 @@ export const questions: Question[] = [
     text: "Mon mental ne s'arrête jamais",
     icon: '/icons/mental-overload.png',
     stoneMatches: {
-      amethyst: 3,
-      sodalite: 2,
+      sodalite: 3,
+      amethyst: 2,
       aquamarine: 1,
     },
   },
@@ -46,9 +46,9 @@ export const questions: Question[] = [
     text: "J'ai du mal à faire le vide dans ma tête",
     icon: '/icons/mental-noise.png',
     stoneMatches: {
-      amethyst: 3,
-      sodalite: 2,
-      labradorite: 1,
+      sodalite: 3,
+      amethyst: 2,
+      aquamarine: 1,
     },
   },
   {
@@ -77,8 +77,8 @@ export const questions: Question[] = [
     icon: '/icons/sadness.png',
     stoneMatches: {
       quartzRose: 3,
-      amethyst: 2,
-      aquamarine: 1,
+      aquamarine: 2,
+      amethyst: 1,
     },
   },
   {
@@ -86,9 +86,9 @@ export const questions: Question[] = [
     text: 'Je me sens stressé·e ou anxieux·se',
     icon: '/icons/stress.png',
     stoneMatches: {
-      amethyst: 3,
+      aquamarine: 3,
       tourmaline: 2,
-      aquamarine: 1,
+      amethyst: 2,
     },
   },
   {
@@ -127,8 +127,8 @@ export const questions: Question[] = [
     icon: '/icons/blocked-creativity.png',
     stoneMatches: {
       citrine: 3,
-      amethyst: 2,
-      lapisLazuli: 1,
+      lapisLazuli: 2,
+      obsidian: 1,
     },
   },
   {
@@ -147,8 +147,8 @@ export const questions: Question[] = [
     icon: '/icons/mental-overload.png',
     stoneMatches: {
       obsidian: 3,
-      amethyst: 2,
-      tourmaline: 1,
+      tourmaline: 2,
+      sodalite: 1,
     },
   },
   {
@@ -177,8 +177,8 @@ export const questions: Question[] = [
     icon: '/icons/clarity.png',
     stoneMatches: {
       sodalite: 3,
-      amethyst: 2,
-      lapisLazuli: 1,
+      lapisLazuli: 2,
+      amethyst: 1,
     },
   },
   {
@@ -187,8 +187,8 @@ export const questions: Question[] = [
     icon: '/icons/fluidity.png',
     stoneMatches: {
       aquamarine: 3,
-      amethyst: 2,
-      quartzRose: 1,
+      quartzRose: 2,
+      amethyst: 1,
     },
   },
   {
