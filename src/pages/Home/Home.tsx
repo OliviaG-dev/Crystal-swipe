@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import { getSwipeHistory } from '../../utils/history';
@@ -16,7 +16,7 @@ function formatHistoryDate(value: string) {
 
 export default function Home() {
   const navigate = useNavigate();
-  const [history] = useState(() => getSwipeHistory().slice(0, 3));
+  const [latestHistory] = useState(() => getSwipeHistory()[0] ?? null);
 
   return (
     <div className="home">
@@ -111,28 +111,27 @@ export default function Home() {
             <p>Découvre les propriétés des pierres de manière ludique</p>
           </div>
 
-          {history.map((entry) => {
-            const mainMatch = entry.matches[0];
-            if (!mainMatch) return null;
-
-            return (
-              <div key={entry.id} className="home__feature home__feature--history">
-                <span className="home__feature-icon">
-                  <img
-                    src={mainMatch.stone.icon}
-                    alt=""
-                    className="home__feature-stone"
-                  />
-                </span>
-                <h3>{mainMatch.stone.name}</h3>
-                <p>
-                  {formatHistoryDate(entry.completedAt)}
-                  <br />
-                  {mainMatch.percentage}% match
-                </p>
-              </div>
-            );
-          })}
+          {latestHistory?.matches[0] && (
+            <Link
+              to={`/stones/${latestHistory.matches[0].stone.id}`}
+              className="home__feature home__feature--history"
+              aria-label={`Voir la fiche ${latestHistory.matches[0].stone.name}`}
+            >
+              <span className="home__feature-icon">
+                <img
+                  src={latestHistory.matches[0].stone.icon}
+                  alt=""
+                  className="home__feature-stone"
+                />
+              </span>
+              <h3>{latestHistory.matches[0].stone.name}</h3>
+              <p>
+                {formatHistoryDate(latestHistory.completedAt)}
+                <br />
+                {latestHistory.matches[0].percentage}% match
+              </p>
+            </Link>
+          )}
         </div>
 
         <div className="home__cta">

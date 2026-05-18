@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { questions } from '../../data/questions';
-import type { SwipeResult, SwipeSession } from '../../types';
+import type { Question, SwipeResult, SwipeSession } from '../../types';
 import SwipeCard from '../../components/SwipeCard/SwipeCard';
 import Header from '../../components/Header/Header';
 import './Swipe.css';
@@ -24,14 +24,25 @@ function createSessionId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
+function buildResults(
+  shuffled: Question[],
+  answers: (boolean | undefined)[]
+): SwipeResult[] {
+  return shuffled.map((question, index) => ({
+    questionId: question.id,
+    liked: answers[index]!,
+  }));
+}
+
 export default function Swipe() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [results, setResults] = useState<SwipeResult[]>([]);
   const [isTouchLayout, setIsTouchLayout] = useState(false);
 
-  // Mélanger les questions une seule fois au chargement du composant
   const shuffledQuestions = useMemo(() => shuffleArray(questions), []);
+  const [answers, setAnswers] = useState<(boolean | undefined)[]>(
+    () => Array(questions.length).fill(undefined)
+  );
 
   // Détecter la vue mobile/tablette pour adapter l'UI
   useEffect(() => {
@@ -49,27 +60,30 @@ export default function Swipe() {
   }, []);
 
   const currentQuestion = shuffledQuestions[currentIndex];
+  const currentAnswer = answers[currentIndex];
   const progress = ((currentIndex + 1) / shuffledQuestions.length) * 100;
   const isLastQuestion = currentIndex === shuffledQuestions.length - 1;
 
-  const handleSwipe = (liked: boolean) => {
-    const newResult: SwipeResult = {
-      questionId: currentQuestion.id,
-      liked,
-    };
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
 
-    const newResults = [...results, newResult];
-    setResults(newResults);
+  const handleSwipe = (liked: boolean) => {
+    const newAnswers = [...answers];
+    newAnswers[currentIndex] = liked;
+    setAnswers(newAnswers);
 
     if (isLastQuestion) {
-      // Sauvegarder les résultats et naviguer vers la page de résultats
+      const finalResults = buildResults(shuffledQuestions, newAnswers);
       const session: SwipeSession = {
         id: createSessionId(),
         completedAt: new Date().toISOString(),
-        results: newResults,
+        results: finalResults,
       };
 
-      localStorage.setItem('swipeResults', JSON.stringify(newResults));
+      localStorage.setItem('swipeResults', JSON.stringify(finalResults));
       localStorage.setItem('swipeSession', JSON.stringify(session));
       navigate('/results');
     } else {
@@ -97,8 +111,19 @@ export default function Swipe() {
         <SwipeCard
           question={currentQuestion}
           onSwipe={handleSwipe}
+          previousAnswer={currentAnswer}
         />
       </div>
+
+      {currentIndex > 0 && (
+        <button
+          type="button"
+          className="swipe__prev-button"
+          onClick={handlePrevious}
+        >
+          ← Question précédente
+        </button>
+      )}
 
       <div className="swipe__hint">
         <p>

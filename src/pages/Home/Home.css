@@ -97,6 +97,22 @@
   line-height: 1.5;
 }
 
+.home__feature--history {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+
+.home__feature--history:hover {
+  border-color: rgba(153, 102, 204, 0.45);
+}
+
+.home__feature--history:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
+}
+
 .home__cta {
   text-align: center;
   margin-top: 3rem;

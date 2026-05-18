@@ -10,7 +10,13 @@ export interface Stone {
   name: string;
   icon: string; // path to icon in public/pierres (e.g. /pierres/améthyste.png)
   description: string;
+  meaning: string;
   properties: string[];
+  useWhen: string[];
+  associations: string[];
+  ritual: string;
+  chakra: string;
+  disclaimer: string;
   usage: string;
   color: string;
 }

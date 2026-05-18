@@ -6,10 +6,16 @@ import './SwipeCard.css';
 interface SwipeCardProps {
   question: Question;
   onSwipe: (liked: boolean) => void;
+  previousAnswer?: boolean;
   className?: string;
 }
 
-export default function SwipeCard({ question, onSwipe, className = '' }: SwipeCardProps) {
+export default function SwipeCard({
+  question,
+  onSwipe,
+  previousAnswer,
+  className = '',
+}: SwipeCardProps) {
   const touchStartX = useRef<number | null>(null);
 
   const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
@@ -43,6 +49,14 @@ export default function SwipeCard({ question, onSwipe, className = '' }: SwipeCa
         <img src={question.icon} alt="" className="swipe-card__icon" />
       </div>
       <p className="swipe-card__text">{question.text}</p>
+      {previousAnswer !== undefined && (
+        <p className="swipe-card__previous-answer">
+          Ta réponse actuelle :{' '}
+          <strong className={previousAnswer ? 'swipe-card__answer--yes' : 'swipe-card__answer--no'}>
+            {previousAnswer ? 'Oui' : 'Non'}
+          </strong>
+        </p>
+      )}
       <div className="swipe-card__actions">
         <button
           className="swipe-card__button swipe-card__button--dislike"

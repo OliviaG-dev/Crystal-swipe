@@ -41,6 +41,20 @@
   justify-content: center;
 }
 
+.swipe-card__previous-answer {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.swipe-card__answer--yes {
+  color: #4cd964;
+}
+
+.swipe-card__answer--no {
+  color: #ff6b6b;
+}
+
 .swipe-card__actions {
   display: flex;
   gap: 2rem;

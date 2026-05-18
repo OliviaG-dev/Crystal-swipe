@@ -66,6 +66,23 @@
   object-fit: contain;
 }
 
+.swipe__prev-button {
+  margin-bottom: 1rem;
+  background: transparent;
+  border: 1px solid rgba(153, 102, 204, 0.5);
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.swipe__prev-button:hover {
+  background: rgba(153, 102, 204, 0.15);
+  border-color: rgba(153, 102, 204, 0.8);
+}
+
 .swipe__back-button {
   margin-top: 1.5rem;
   background: transparent;

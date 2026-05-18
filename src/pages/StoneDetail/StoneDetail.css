@@ -1,0 +1,211 @@
+.stone-detail {
+  width: 100%;
+  max-width: 1120px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.stone-detail__back {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.stone-detail__back:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.stone-detail__hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 2rem 0;
+}
+
+.stone-detail__image-wrap {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+}
+
+.stone-detail__image {
+  width: min(100%, 320px);
+  max-height: 320px;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 46px rgba(0, 0, 0, 0.38));
+}
+
+.stone-detail__intro {
+  min-width: 0;
+}
+
+.stone-detail__eyebrow {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.stone-detail__intro h1 {
+  margin: 0 0 1rem;
+  color: white;
+  font-size: clamp(2.4rem, 8vw, 4.8rem);
+  line-height: 0.98;
+}
+
+.stone-detail__description {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.stone-detail__chakra {
+  display: inline-grid;
+  gap: 0.15rem;
+  margin-top: 1.35rem;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+}
+
+.stone-detail__chakra span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+}
+
+.stone-detail__chakra strong {
+  color: white;
+}
+
+.stone-detail__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stone-detail__panel {
+  padding: 1.35rem;
+  background: linear-gradient(135deg, rgba(153, 102, 204, 0.12) 0%, rgba(74, 144, 226, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.stone-detail__panel--wide,
+.stone-detail__panel--note {
+  grid-column: 1 / -1;
+}
+
+.stone-detail__panel h2 {
+  margin: 0 0 0.75rem;
+  color: white;
+  font-size: 1.08rem;
+}
+
+.stone-detail__panel p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
+.stone-detail__panel ul {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.15rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+}
+
+.stone-detail__associations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.stone-detail__association {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+}
+
+.stone-detail__association:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.stone-detail__association img {
+  width: 2.6rem;
+  height: 2.6rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.stone-detail__panel--note {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.stone-detail__not-found {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  max-width: 520px;
+  margin: 7rem auto 0;
+  text-align: center;
+}
+
+.stone-detail__not-found h1 {
+  margin: 0;
+  color: white;
+}
+
+.stone-detail__not-found p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+@media (max-width: 760px) {
+  .stone-detail {
+    padding: 1rem 1rem 2rem;
+  }
+
+  .stone-detail__hero {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .stone-detail__image-wrap {
+    min-height: 220px;
+  }
+
+  .stone-detail__image {
+    max-height: 230px;
+  }
+
+  .stone-detail__description {
+    font-size: 1rem;
+  }
+
+  .stone-detail__grid {
+    grid-template-columns: 1fr;
+  }
+}

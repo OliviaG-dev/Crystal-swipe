@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { MatchResult } from '../../types';
 import './StoneCard.css';
 
@@ -74,6 +75,9 @@ export default function StoneCard({ match, rank }: StoneCardProps) {
           {stone.usage}
         </p>
       </div>
+      <Link to={`/stones/${stone.id}`} className="stone-card__detail-link">
+        Voir la fiche pierre
+      </Link>
     </div>
   );
 }
