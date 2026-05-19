@@ -3,10 +3,16 @@ import type { TouchEvent } from 'react';
 import type { Question } from '../../types';
 import './SwipeCard.css';
 
+const SWIPE_THRESHOLD = 80;
+
 interface SwipeCardProps {
   question: Question;
   onSwipe: (liked: boolean) => void;
   previousAnswer?: boolean;
+  enableVerticalGestures?: boolean;
+  onSkip?: () => void;
+  onGoBack?: () => void;
+  canGoBack?: boolean;
   className?: string;
 }
 
@@ -14,34 +20,50 @@ export default function SwipeCard({
   question,
   onSwipe,
   previousAnswer,
+  enableVerticalGestures = false,
+  onSkip,
+  onGoBack,
+  canGoBack = false,
   className = '',
 }: SwipeCardProps) {
-  const touchStartX = useRef<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
-    touchStartX.current = event.touches[0].clientX;
+    touchStart.current = {
+      x: event.touches[0].clientX,
+      y: event.touches[0].clientY,
+    };
   };
 
   const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
-    if (touchStartX.current === null) return;
+    if (touchStart.current === null) return;
 
-    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
-    const threshold = 80;
+    const deltaX = event.changedTouches[0].clientX - touchStart.current.x;
+    const deltaY = event.changedTouches[0].clientY - touchStart.current.y;
+    touchStart.current = null;
 
-    if (deltaX > threshold) {
-      // Swipe vers la droite → oui
-      onSwipe(true);
-    } else if (deltaX < -threshold) {
-      // Swipe vers la gauche → non
-      onSwipe(false);
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+
+    if (enableVerticalGestures && absY > absX && absY >= SWIPE_THRESHOLD) {
+      if (deltaY < 0) {
+        onSkip?.();
+      } else if (canGoBack) {
+        onGoBack?.();
+      }
+      return;
     }
 
-    touchStartX.current = null;
+    if (deltaX > SWIPE_THRESHOLD) {
+      onSwipe(true);
+    } else if (deltaX < -SWIPE_THRESHOLD) {
+      onSwipe(false);
+    }
   };
 
   return (
     <div
-      className={`swipe-card ${className}`}
+      className={`swipe-card ${enableVerticalGestures ? 'swipe-card--touch' : ''} ${className}`}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >

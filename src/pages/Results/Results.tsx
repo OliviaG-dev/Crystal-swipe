@@ -1,44 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { SwipeResult, MatchResult, SwipeSession, HistoryEntry } from '../../types';
+import type { MatchResult, SwipeSession, HistoryEntry } from '../../types';
 import { questions } from '../../data/questions';
 import { calculateMatches } from '../../utils/scoring';
 import { clearSwipeHistory, getSwipeHistory, saveSwipeHistoryEntry } from '../../utils/history';
+import { formatHistoryDate } from '../../utils/dateFormat';
+import { paginateItems } from '../../utils/historyPagination';
+import { getInitialSession } from '../../utils/sessionStorage';
 import Header from '../../components/Header/Header';
 import StoneCard from '../../components/StoneCard/StoneCard';
 import Button from '../../components/Button/Button';
 import './Results.css';
-
-function getInitialSession(): SwipeSession | null {
-  try {
-    const savedSession = localStorage.getItem('swipeSession');
-    if (savedSession) {
-      const session: SwipeSession = JSON.parse(savedSession);
-      if (Array.isArray(session.results)) return session;
-    }
-
-    const saved = localStorage.getItem('swipeResults');
-    if (!saved) return null;
-    const results: SwipeResult[] = JSON.parse(saved);
-
-    return {
-      id: `legacy-${Date.now()}`,
-      completedAt: new Date().toISOString(),
-      results,
-    };
-  } catch {
-    return null;
-  }
-}
-
-function formatHistoryDate(value: string) {
-  return new Intl.DateTimeFormat('fr-FR', {
-    day: '2-digit',
-    month: 'short',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(new Date(value));
-}
 
 export default function Results() {
   const navigate = useNavigate();
@@ -50,6 +22,14 @@ export default function Results() {
     if (!session || matches.length === 0) return getSwipeHistory();
     return saveSwipeHistoryEntry(session, matches);
   });
+  const [historyPage, setHistoryPage] = useState(0);
+
+  const {
+    items: paginatedHistory,
+    totalPages: totalHistoryPages,
+    currentPage: currentHistoryPage,
+    showPagination,
+  } = paginateItems(history, historyPage);
 
   useEffect(() => {
     if (matches.length === 0) {
@@ -72,6 +52,7 @@ export default function Results() {
   const handleClearHistory = () => {
     clearSwipeHistory();
     setHistory([]);
+    setHistoryPage(0);
   };
 
   if (matches.length === 0) {
@@ -112,17 +93,21 @@ export default function Results() {
         {history.length > 0 && (
           <section className="results__history" aria-labelledby="history-title">
             <div className="results__history-header">
-              <h2 id="history-title">Historique des tirages</h2>
+              <h2 id="history-title">Historique</h2>
               <button
                 type="button"
                 className="results__history-clear"
                 onClick={handleClearHistory}
+                aria-label="Effacer l'historique"
               >
-                Effacer
+                <span className="results__history-clear-label">Effacer</span>
+                <span className="results__history-clear-icon" aria-hidden="true">
+                  ×
+                </span>
               </button>
             </div>
             <div className="results__history-list">
-              {history.map((entry) => {
+              {paginatedHistory.map((entry) => {
                 const mainMatch = entry.matches[0];
                 if (!mainMatch) return null;
 
@@ -144,6 +129,35 @@ export default function Results() {
                 );
               })}
             </div>
+
+            {showPagination && (
+              <nav
+                className="results__history-pagination"
+                aria-label="Pagination de l'historique"
+              >
+                <button
+                  type="button"
+                  className="results__history-page-btn"
+                  onClick={() => setHistoryPage((page) => page - 1)}
+                  disabled={currentHistoryPage === 0}
+                  aria-label="Page précédente"
+                >
+                  Précédent
+                </button>
+                <span className="results__history-page-info">
+                  Page {currentHistoryPage + 1} / {totalHistoryPages}
+                </span>
+                <button
+                  type="button"
+                  className="results__history-page-btn"
+                  onClick={() => setHistoryPage((page) => page + 1)}
+                  disabled={currentHistoryPage >= totalHistoryPages - 1}
+                  aria-label="Page suivante"
+                >
+                  Suivant
+                </button>
+              </nav>
+            )}
           </section>
         )}
       </div>

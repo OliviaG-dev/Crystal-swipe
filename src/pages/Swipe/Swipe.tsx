@@ -1,38 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { questions } from '../../data/questions';
-import type { Question, SwipeResult, SwipeSession } from '../../types';
+import { shuffleArray } from '../../utils/swipeResults';
+import { saveSwipeSessionAndGoToResults } from '../../utils/swipeSession';
 import SwipeCard from '../../components/SwipeCard/SwipeCard';
 import Header from '../../components/Header/Header';
 import './Swipe.css';
-
-// Fonction pour mélanger aléatoirement un tableau
-function shuffleArray<T>(array: T[]): T[] {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
-
-function createSessionId() {
-  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
-    return crypto.randomUUID();
-  }
-
-  return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-}
-
-function buildResults(
-  shuffled: Question[],
-  answers: (boolean | undefined)[]
-): SwipeResult[] {
-  return shuffled.map((question, index) => ({
-    questionId: question.id,
-    liked: answers[index]!,
-  }));
-}
 
 export default function Swipe() {
   const navigate = useNavigate();
@@ -65,9 +38,7 @@ export default function Swipe() {
   const isLastQuestion = currentIndex === shuffledQuestions.length - 1;
 
   const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
+    setCurrentIndex((index) => Math.max(0, index - 1));
   };
 
   const handleSwipe = (liked: boolean) => {
@@ -76,16 +47,19 @@ export default function Swipe() {
     setAnswers(newAnswers);
 
     if (isLastQuestion) {
-      const finalResults = buildResults(shuffledQuestions, newAnswers);
-      const session: SwipeSession = {
-        id: createSessionId(),
-        completedAt: new Date().toISOString(),
-        results: finalResults,
-      };
+      saveSwipeSessionAndGoToResults(shuffledQuestions, newAnswers, navigate);
+    } else {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
 
-      localStorage.setItem('swipeResults', JSON.stringify(finalResults));
-      localStorage.setItem('swipeSession', JSON.stringify(session));
-      navigate('/results');
+  const handleSkip = () => {
+    const newAnswers = [...answers];
+    newAnswers[currentIndex] = undefined;
+    setAnswers(newAnswers);
+
+    if (isLastQuestion) {
+      saveSwipeSessionAndGoToResults(shuffledQuestions, newAnswers, navigate);
     } else {
       setCurrentIndex(currentIndex + 1);
     }
@@ -112,40 +86,63 @@ export default function Swipe() {
           question={currentQuestion}
           onSwipe={handleSwipe}
           previousAnswer={currentAnswer}
+          enableVerticalGestures={isTouchLayout}
+          onSkip={handleSkip}
+          onGoBack={handlePrevious}
+          canGoBack={currentIndex > 0}
         />
       </div>
 
-      {currentIndex > 0 && (
-        <button
-          type="button"
-          className="swipe__prev-button"
-          onClick={handlePrevious}
-        >
-          ← Question précédente
-        </button>
+      {!isTouchLayout && (
+        <div className="swipe__nav-actions">
+          {currentIndex > 0 && (
+            <button
+              type="button"
+              className="swipe__prev-button"
+              onClick={handlePrevious}
+            >
+              RETOUR
+            </button>
+          )}
+          <button
+            type="button"
+            className="swipe__skip-button"
+            onClick={handleSkip}
+          >
+            PASSER
+          </button>
+        </div>
       )}
 
-      <div className="swipe__hint">
-        <p>
-          {isTouchLayout
-            ? (
-              <>
-                Swipe à gauche si c’est{' '}
-                <span className="swipe__hint-text--no">NON</span>
-                {' '}et à droite si c’est{' '}
-                <span className="swipe__hint-text--yes">OUI</span>
-                .
-              </>
-            ) : (
-              <>
-                Swipe{' '}
-                <img src="/icons/swipe-yes.png" alt="" className="swipe__hint-icon" />
-                {' '}si ça te ressemble,{' '}
-                <img src="/icons/swipe-no.png" alt="" className="swipe__hint-icon" />
-                {' '}sinon
-              </>
-            )}
-        </p>
+      <div className={`swipe__hint ${isTouchLayout ? 'swipe__hint--touch' : ''}`}>
+        {isTouchLayout ? (
+          <div className="swipe__hint-row">
+            <p className="swipe__hint-lines">
+              <span className="swipe__hint-line">
+                <span className="swipe__hint-text--no">← NON</span>
+                {' · '}
+                <span className="swipe__hint-text--yes">OUI →</span>
+              </span>
+              <span className="swipe__hint-line">
+                <span className="swipe__hint-text--skip">↑ PASSER</span>
+                {currentIndex > 0 && (
+                  <>
+                    {' · '}
+                    <span className="swipe__hint-text--back">↓ RETOUR</span>
+                  </>
+                )}
+              </span>
+            </p>
+          </div>
+        ) : (
+          <p>
+            Swipe{' '}
+            <img src="/icons/swipe-yes.png" alt="" className="swipe__hint-icon" />
+            {' '}si ça te ressemble,{' '}
+            <img src="/icons/swipe-no.png" alt="" className="swipe__hint-icon" />
+            {' '}sinon
+          </p>
+        )}
       </div>
 
       <button

@@ -49,14 +49,55 @@
   margin-top: 1rem;
 }
 
+.swipe__hint p {
+  margin: 0;
+}
+
+.swipe__hint--touch .swipe__hint-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.swipe__hint--touch .swipe__hint-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.swipe__hint--touch .swipe__hint-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.swipe__hint-text--no,
+.swipe__hint-text--yes,
+.swipe__hint-text--skip,
+.swipe__hint-text--back {
+  font-weight: 600;
+}
+
 .swipe__hint-text--no {
   color: #ff6b6b;
-  font-weight: 600;
 }
 
 .swipe__hint-text--yes {
   color: #4cd964;
-  font-weight: 600;
+}
+
+.swipe__hint-text--skip {
+  color: #f0c14d;
+}
+
+.swipe__hint-text--back {
+  color: #9966cc;
 }
 
 .swipe__hint-icon {
@@ -66,10 +107,19 @@
   object-fit: contain;
 }
 
-.swipe__prev-button {
+.swipe__nav-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
   margin-bottom: 1rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.swipe__prev-button,
+.swipe__skip-button {
   background: transparent;
-  border: 1px solid rgba(153, 102, 204, 0.5);
   border-radius: 999px;
   padding: 0.6rem 1.4rem;
   color: rgba(255, 255, 255, 0.9);
@@ -78,9 +128,26 @@
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
+.swipe__prev-button {
+  color: #9966cc;
+  border: 1px solid rgba(153, 102, 204, 0.55);
+}
+
 .swipe__prev-button:hover {
   background: rgba(153, 102, 204, 0.15);
-  border-color: rgba(153, 102, 204, 0.8);
+  border-color: rgba(153, 102, 204, 0.85);
+  color: #b88cff;
+}
+
+.swipe__skip-button {
+  color: #f0c14d;
+  border: 1px solid rgba(240, 193, 77, 0.45);
+}
+
+.swipe__skip-button:hover {
+  background: rgba(240, 193, 77, 0.12);
+  border-color: rgba(240, 193, 77, 0.75);
+  color: #ffd56a;
 }
 
 .swipe__back-button {

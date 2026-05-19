@@ -67,6 +67,11 @@
   .swipe-card__actions {
     display: none;
   }
+
+  .swipe-card--touch {
+    touch-action: none;
+    user-select: none;
+  }
 }
 
 .swipe-card__button {

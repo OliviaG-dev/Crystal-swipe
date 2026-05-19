@@ -19,8 +19,13 @@ export function calculateMatches(
     }
   });
 
-  // Trouver le score maximum pour calculer les pourcentages
-  const maxScore = Math.max(...Object.values(scores), 0);
+  // Trouver le score maximum (pierres connues uniquement) pour les pourcentages
+  const maxScore = Math.max(
+    ...Object.keys(scores)
+      .filter((stoneId) => stones.some((stone) => stone.id === stoneId))
+      .map((stoneId) => scores[stoneId]),
+    0
+  );
 
   // Créer les résultats de match
   const matches: MatchResult[] = Object.entries(scores)

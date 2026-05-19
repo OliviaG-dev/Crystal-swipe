@@ -3,16 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import { getSwipeHistory } from '../../utils/history';
+import { formatHistoryDate } from '../../utils/dateFormat';
 import './Home.css';
-
-function formatHistoryDate(value: string) {
-  return new Intl.DateTimeFormat('fr-FR', {
-    day: '2-digit',
-    month: 'short',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(new Date(value));
-}
 
 export default function Home() {
   const navigate = useNavigate();

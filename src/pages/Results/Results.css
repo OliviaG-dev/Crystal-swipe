@@ -62,11 +62,16 @@
   background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .results__history-clear:hover {
   background: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.34);
+}
+
+.results__history-clear-icon {
+  display: none;
 }
 
 .results__history-list {
@@ -106,6 +111,75 @@
   color: rgba(255, 255, 255, 0.58);
 }
 
+.results__history-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.results__history-page-info {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  min-width: 6rem;
+  text-align: center;
+}
+
+.results__history-page-btn {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  padding: 0.45rem 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.results__history-page-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.results__history-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .results__history-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .results__history-header h2 {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .results__history-clear {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .results__history-clear-label {
+    display: none;
+  }
+
+  .results__history-clear-icon {
+    display: block;
+    font-size: 1.35rem;
+    line-height: 1;
+    font-weight: 300;
+  }
+}
+
 @media (max-width: 768px) {
   .results {
     padding: 1rem;
@@ -121,10 +195,5 @@
 
   .results__history {
     padding: 1rem;
-  }
-
-  .results__history-header {
-    align-items: flex-start;
-    flex-direction: column;
   }
 }
