@@ -47,10 +47,14 @@ npm run preview  # prévisualiser le build
 npm run lint          # ESLint
 npm run test          # Vitest (mode watch)
 npm run test:run      # Vitest (une passe)
-npm run test:coverage # couverture des utils (scoring, history)
+npm run test:coverage # couverture unit/integration (Vitest)
+npm run test:e2e      # Playwright E2E (headless)
+npm run test:e2e:ui   # Playwright E2E (UI)
 ```
 
-Les tests couvrent les utils, composants (`Button`, `Header`, `StoneCard`, `SwipeCard`) et les pages (`Home`, `Swipe`, `Results`, `StoneDetail`) — Vitest + Testing Library. Rapport : `npm run test:coverage`.
+Les tests couvrent les utils, composants (`Button`, `Header`, `StoneCard`, `SwipeCard`) et les pages (`Home`, `Swipe`, `Results`, `StoneDetail`) — Vitest + Testing Library.
+
+Les scénarios E2E Playwright couvrent les parcours critiques : quiz complet (`/` → `/swipe` → `/results`), pagination/effacement d'historique et ouverture d'une fiche pierre.
 
 ## Architecture
 
@@ -82,7 +86,16 @@ crystal-swipe/
 │   │   └── index.ts
 │   └── utils/
 │       ├── scoring.ts
-│       └── history.ts
+│       ├── history.ts
+│       ├── dateFormat.ts
+│       ├── historyPagination.ts
+│       ├── sessionStorage.ts
+│       ├── swipeResults.ts
+│       └── swipeSession.ts
+├── tests/
+│   └── e2e/
+│       └── app.spec.ts
+├── playwright.config.ts
 ├── index.html
 └── package.json
 ```
